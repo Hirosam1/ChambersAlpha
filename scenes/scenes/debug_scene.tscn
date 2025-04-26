@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6ckxmr2tutmh"]
+[gd_scene load_steps=8 format=3 uid="uid://b6ckxmr2tutmh"]
 
-[ext_resource type="Texture2D" uid="uid://0prtyam61782" path="res://char.png" id="1_gyip4"]
-[ext_resource type="Script" uid="uid://c53ohwcujoc5d" path="res://scenes/scenes/char_controll.gd" id="2_umm3h"]
+[ext_resource type="Texture2D" uid="uid://0prtyam61782" path="res://images/char.png" id="1_gyip4"]
+[ext_resource type="Script" uid="uid://c53ohwcujoc5d" path="res://scripts/char_controll.gd" id="2_umm3h"]
 [ext_resource type="PackedScene" uid="uid://db77cjoofsca8" path="res://scenes/assets/wall.tscn" id="2_unk8r"]
-[ext_resource type="Texture2D" uid="uid://dptr5my5pb2om" path="res://debug_tileset.png" id="4_umm3h"]
+[ext_resource type="Script" uid="uid://bhfe3l6lb1v7y" path="res://scripts/spell_spawner.gd" id="3_g2fuq"]
+[ext_resource type="PackedScene" uid="uid://dx4vxusb3bu75" path="res://scenes/assets/spell_1.tscn" id="4_ejbsa"]
+[ext_resource type="Texture2D" uid="uid://dptr5my5pb2om" path="res://images/debug_tileset.png" id="4_umm3h"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_unk8r"]
 radius = 0.08
@@ -12,7 +14,9 @@ radius = 0.08
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.985408, 0, -0.170209, 0, 1, 0, 0.170209, 0, 0.985408, -0.125, 0, -0.175)
+collision_layer = 0
 script = ExtResource("2_umm3h")
+mouse_sensitivity = 0.2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -29,6 +33,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("1_gyip4")
+
+[node name="SpellSpawner" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 0, -0.07)
+script = ExtResource("3_g2fuq")
+delay = 0.6
+spell_asset = ExtResource("4_ejbsa")
 
 [node name="Map" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0, -1)
@@ -63,6 +73,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 
 
 [node name="Wall8" parent="Map/NorthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 0, -0.48)
+frame = 1
 
 [node name="Wall10" parent="Map/NorthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0)

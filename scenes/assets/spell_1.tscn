@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://dx4vxusb3bu75"]
+
+[ext_resource type="Script" uid="uid://ce2sf4buyn123" path="res://scripts/spell_animation.gd" id="1_alfpf"]
+[ext_resource type="Script" uid="uid://c2c4exqxu3qpw" path="res://scripts/spell_movement.gd" id="1_v7wfi"]
+[ext_resource type="Texture2D" uid="uid://datio37gdd5f1" path="res://images/spell1.png" id="2_v7wfi"]
+
+[sub_resource type="Animation" id="Animation_ejbsa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spell:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_g2fuq"]
+resource_name = "spell_idle"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spell:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ylnv5"]
+_data = {
+&"RESET": SubResource("Animation_ejbsa"),
+&"spell_idle": SubResource("Animation_g2fuq")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g2fuq"]
+radius = 0.08
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_v7wfi")
+speed = 1.8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ylnv5")
+}
+movie_quit_on_finish = true
+script = ExtResource("1_alfpf")
+
+[node name="Spell" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_v7wfi")
+hframes = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_g2fuq")
+debug_color = Color(0.84156, 0.181934, 0.599735, 0.823529)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
