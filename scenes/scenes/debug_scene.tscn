@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6ckxmr2tutmh"]
+[gd_scene load_steps=6 format=3 uid="uid://b6ckxmr2tutmh"]
 
 [ext_resource type="Texture2D" uid="uid://0prtyam61782" path="res://char.png" id="1_gyip4"]
 [ext_resource type="Script" uid="uid://c53ohwcujoc5d" path="res://scenes/scenes/char_controll.gd" id="2_umm3h"]
 [ext_resource type="PackedScene" uid="uid://db77cjoofsca8" path="res://scenes/assets/wall.tscn" id="2_unk8r"]
+[ext_resource type="Texture2D" uid="uid://dptr5my5pb2om" path="res://debug_tileset.png" id="4_umm3h"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_unk8r"]
 radius = 0.08
@@ -12,19 +13,19 @@ radius = 0.08
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.985408, 0, -0.170209, 0, 1, 0, 0.170209, 0, 0.985408, -0.125, 0, -0.175)
 script = ExtResource("2_umm3h")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 shape = SubResource("SphereShape3D_unk8r")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.00413892, 0.468, 0.129304)
+transform = Transform3D(1, 0, 0, 0, 0.920505, 0.390731, 0, -0.390731, 0.920505, 0, 0.496, 0.478)
 projection = 1
-size = 1.1
 near = 0.01
 
 [node name="Char" type="Sprite3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("1_gyip4")
@@ -35,9 +36,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0, -1)
 [node name="NorthWalls" type="Node3D" parent="Map"]
 
 [node name="Wall" parent="Map/NorthWalls" instance=ExtResource("2_unk8r")]
+frame = 2
 
 [node name="Wall3" parent="Map/NorthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+frame = 1
 
 [node name="Wall4" parent="Map/NorthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64, 0, 0)
@@ -50,6 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64, 0, 0)
 
 [node name="Wall6" parent="Map/NorthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8, 0, -0.16)
+frame = 1
 
 [node name="Wall9" parent="Map/NorthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8, 0, -0.48)
@@ -91,9 +95,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.24)
 
 [node name="Wall" parent="Map/SouthWalls" instance=ExtResource("2_unk8r")]
+frame = 1
 
 [node name="Wall3" parent="Map/SouthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+frame = 1
 
 [node name="Wall4" parent="Map/SouthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64, 0, 0)
@@ -106,6 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64, 0, 0)
 
 [node name="Wall6" parent="Map/SouthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8, 0, -0.16)
+frame = 2
 
 [node name="Wall9" parent="Map/SouthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8, 0, -0.48)
@@ -115,6 +122,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 
 
 [node name="Wall8" parent="Map/SouthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 0, -0.48)
+frame = 1
 
 [node name="Wall10" parent="Map/SouthWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0)
@@ -148,32 +156,32 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 
 [node name="Wall10" parent="Map/Columns" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 0, 0.8)
 billboard = 2
-frame = 1
+frame = 5
 
 [node name="Wall11" parent="Map/Columns" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 0, 1.12)
 billboard = 2
-frame = 1
+frame = 5
 
 [node name="Wall12" parent="Map/Columns" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 0, 1.44)
 billboard = 2
-frame = 1
+frame = 5
 
 [node name="Wall13" parent="Map/Columns" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8, 0, 0.8)
 billboard = 2
-frame = 1
+frame = 5
 
 [node name="Wall14" parent="Map/Columns" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8, 0, 1.12)
 billboard = 2
-frame = 1
+frame = 5
 
 [node name="Wall15" parent="Map/Columns" instance=ExtResource("2_unk8r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8, 0, 1.44)
 billboard = 2
-frame = 1
+frame = 5
 
 [node name="WestWalls" type="Node3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44, 0, 0.96)
@@ -210,3 +218,1294 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.19209e
 
 [node name="Wall14" parent="Map/EastWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.19209e-07, 0, 0.8)
+
+[node name="Ground" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.032, 0)
+
+[node name="Ground" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground2" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground3" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground4" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground5" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground6" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground7" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground8" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground9" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground87" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground88" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground89" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground90" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground91" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground92" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground93" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground94" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground95" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground96" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground97" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground98" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground99" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground100" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground101" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground102" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground103" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground104" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground105" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground106" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground107" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground108" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground109" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground110" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground111" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground112" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground113" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground114" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground115" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground116" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground117" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground118" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground119" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground120" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground121" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground122" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground123" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground124" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground125" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground126" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground127" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground128" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground129" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground130" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground131" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground10" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground11" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground12" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground13" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground14" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground15" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground16" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground17" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground18" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground19" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground20" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground21" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground22" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground23" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground24" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground25" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground26" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground27" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground28" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground29" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground30" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground31" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground32" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground33" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground34" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground35" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground36" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground37" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground38" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground39" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground40" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground41" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground42" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground43" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground44" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground45" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground46" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground47" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground48" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground49" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground50" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground51" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground52" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground53" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="Ground54" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground55" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground56" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground57" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground58" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground59" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground60" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground61" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground62" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground63" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground64" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground65" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground66" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground67" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground68" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground69" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground70" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground71" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground72" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground73" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground74" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground75" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground76" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground77" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground78" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.64, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground79" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.32, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground80" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.65661e-09, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground81" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.32, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground82" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.64, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground83" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.96, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground84" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.28, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground132" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground133" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground134" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground135" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground136" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground137" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground138" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground139" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground140" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground141" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground142" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground143" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground144" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground145" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground146" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.6, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground147" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground148" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, -0.16)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground149" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, -0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground150" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 2.72)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground151" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 3.04)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground152" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, -0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground153" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 0.48)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground154" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 0.8)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground155" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 1.12)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground156" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 1.44)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground157" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 1.76)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground158" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground159" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground160" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 2.08)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground161" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.6, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground85" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.96, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="Ground86" type="Sprite3D" parent="Map/Ground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.28, -0.16, 2.4)
+texture_filter = 0
+texture = ExtResource("4_umm3h")
+hframes = 3
+vframes = 2
+frame = 3
