@@ -12,13 +12,15 @@ radius = 0.08
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.985408, 0, -0.170209, 0, 1, 0, 0.170209, 0, 0.985408, -0.125, 0, -0.175)
 script = ExtResource("2_umm3h")
+speed = null
+mouse_sensebility = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 shape = SubResource("SphereShape3D_unk8r")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.00413892, 0.468, 0.129304)
+transform = Transform3D(1, 0, -1.49012e-08, 0, 0.910684, 0.413105, 0, -0.413105, 0.910684, 0, 0.472625, 0.219)
 projection = 1
 size = 1.1
 near = 0.01
@@ -88,7 +90,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.8, 0.32, -0.48)
 
 [node name="SouthWalls" type="Node3D" parent="Map"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.24)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.92)
 
 [node name="Wall" parent="Map/SouthWalls" instance=ExtResource("2_unk8r")]
 
@@ -190,9 +192,6 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.19209e
 [node name="Wall13" parent="Map/WestWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.19209e-07, 0, 0.48)
 
-[node name="Wall14" parent="Map/WestWalls" instance=ExtResource("2_unk8r")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.19209e-07, 0, 0.8)
-
 [node name="EastWalls" type="Node3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44, 0, 0.96)
 
@@ -207,6 +206,3 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.19209e
 
 [node name="Wall13" parent="Map/EastWalls" instance=ExtResource("2_unk8r")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.19209e-07, 0, 0.48)
-
-[node name="Wall14" parent="Map/EastWalls" instance=ExtResource("2_unk8r")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.19209e-07, 0, 0.8)
