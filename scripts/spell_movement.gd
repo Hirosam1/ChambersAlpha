@@ -3,15 +3,24 @@ extends Area3D
 @export
 var speed := 5.0
 
+## How long in seconds the spell lives.
+@export
+var lifetime := 4.0
+
 var is_cast := false
 var direction := Vector3()
+var elapsed_time : float
 
 func ready_spell(direction: Vector3):
+	elapsed_time = 0.0
 	self.direction = direction
 	is_cast = true
 
 func _process(delta: float) -> void:
-	if(is_cast):
+	elapsed_time += delta
+	if(elapsed_time >= lifetime):
+		queue_free()
+	elif(is_cast):
 		position += speed * direction * delta
 
 func _on_body_entered(body: Node3D) -> void:

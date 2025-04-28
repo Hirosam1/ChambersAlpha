@@ -45,7 +45,7 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_g2fuq"]
 radius = 0.08
 
-[node name="Area3D" type="Area3D"]
+[node name="SpellController" type="Area3D"]
 script = ExtResource("1_v7wfi")
 speed = 5.1
 

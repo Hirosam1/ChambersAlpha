@@ -7,7 +7,7 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="Char" parent="." instance=ExtResource("1_g2fuq")]
-transform = Transform3D(0.985408, 0, -0.170209, 0, 1, 0, 0.170209, 0, 0.985408, -0.125, 0.51, -0.175)
+transform = Transform3D(0.985408, 0, -0.170209, 0, 1, 0, 0.170209, 0, 0.985408, -0.125, 0.5, -0.175)
 
 [node name="Layer0" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009, -0.16, 0.001)
