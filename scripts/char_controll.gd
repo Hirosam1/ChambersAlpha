@@ -24,17 +24,21 @@ func _process(delta: float) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	inpt_mov_vec = inpt_mov_vec.normalized()
 
 func _physics_process(delta: float) -> void:
-	var velovity_2d := inpt_mov_vec * speed * delta
-	velovity_2d = velovity_2d.rotated(-rotation.y)
-	var velocity := Vector3(velovity_2d.x, 0.0, velovity_2d.y)
 	if(is_captured_mode):
 		rotation.y += mouse_sensitivity*-mouse_mov.x*delta
 	mouse_mov = Vector2()
-	move_and_collide(velocity)
-	
+	if(abs(inpt_mov_vec.x) + abs(inpt_mov_vec.y) >= 0.01):
+		inpt_mov_vec = inpt_mov_vec.normalized()
+		var velovity_2d := inpt_mov_vec * speed
+		velovity_2d = velovity_2d.rotated(-rotation.y)
+		velocity = Vector3(velovity_2d.x, 0.0, velovity_2d.y)
+	else:
+		velocity = Vector3()
+		
+	move_and_slide()
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_mov = event.relative

@@ -43,7 +43,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g2fuq"]
-radius = 0.08
+radius = 0.11
 
 [node name="SpellController" type="Area3D"]
 script = ExtResource("1_v7wfi")
@@ -64,7 +64,8 @@ texture = ExtResource("2_v7wfi")
 hframes = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272083, 0, 0.000314951)
 shape = SubResource("SphereShape3D_g2fuq")
-debug_color = Color(0.84156, 0.181934, 0.599735, 0.823529)
+debug_color = Color(0, 0.882353, 0.258824, 0.823529)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
