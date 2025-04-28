@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6ckxmr2tutmh"]
+[gd_scene load_steps=9 format=3 uid="uid://b6ckxmr2tutmh"]
 
 [ext_resource type="Texture2D" uid="uid://0prtyam61782" path="res://images/char.png" id="1_gyip4"]
 [ext_resource type="Script" uid="uid://c53ohwcujoc5d" path="res://scripts/char_controll.gd" id="2_umm3h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bhfe3l6lb1v7y" path="res://scripts/spell_spawner.gd" id="3_g2fuq"]
 [ext_resource type="PackedScene" uid="uid://dx4vxusb3bu75" path="res://scenes/assets/spell_1.tscn" id="4_ejbsa"]
 [ext_resource type="Texture2D" uid="uid://dptr5my5pb2om" path="res://images/debug_tileset.png" id="4_umm3h"]
+[ext_resource type="MeshLibrary" uid="uid://btlcrj1hse0vn" path="res://meshes/mesh_lib/FrozMeshLib.tres" id="7_ylnv5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_unk8r"]
 radius = 0.08
@@ -41,7 +42,8 @@ delay = 0.6
 spell_asset = ExtResource("4_ejbsa")
 
 [node name="Map" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -1.46195, 0)
+visible = false
 
 [node name="NorthWalls" type="Node3D" parent="Map"]
 
@@ -1520,3 +1522,20 @@ texture = ExtResource("4_umm3h")
 hframes = 3
 vframes = 2
 frame = 3
+
+[node name="Layer0" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.225432, 0)
+
+[node name="WallGridMap" type="GridMap" parent="Layer0"]
+mesh_library = ExtResource("7_ylnv5")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(4, 65535, 1441792, 4, 0, 1441794, 4, 1, 1441792, 4, 3, 1441792, 4, 65533, 1441792, 4, 65534, 1441793, 4, 2, 1441793, 5, 65532, 524288, 6, 65533, 131072, 5, 4, 0, 6, 4, 0)
+}
+
+[node name="FloorGridMap2" type="GridMap" parent="Layer0"]
+mesh_library = ExtResource("7_ylnv5")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(2, 0, 1441796, 1, 0, 1441796, 1, 65535, 1441796, 2, 65535, 1441796, 3, 65535, 1441796, 3, 0, 1441796, 3, 1, 1441796, 2, 1, 1441796, 1, 1, 1441796, 1, 65534, 1441795, 2, 65534, 1441795, 3, 65534, 1441795, 4, 65535, 1441795, 4, 65534, 1441795, 4, 0, 1441795, 4, 1, 1441795, 4, 2, 1441795, 3, 2, 1441795, 2, 2, 1441795, 1, 2, 1441795, 0, 2, 1441795, 0, 1, 1441795, 0, 0, 1441795, 0, 65535, 1441795, 0, 65534, 1441795, 4, 65533, 1441795, 3, 65533, 1441795, 2, 65533, 1441795, 1, 65533, 655363, 0, 65533, 655363, 0, 3, 1048579, 1, 3, 1048579, 2, 3, 1048579, 4, 3, 1048579, 3, 3, 1048579, 2, 4, 1048580, 2, 5, 1048580, 2, 6, 1048580, 2, 65532, 1048580, 2, 65531, 1048580, 2, 65530, 1048580, 2, 65529, 1048580, 1, 4, 1048579, 1, 5, 1048579, 0, 4, 1048579, 0, 5, 1048579, 0, 6, 1048579, 1, 6, 1048579, 3, 6, 1048579, 3, 5, 1048579, 4, 5, 1048579, 4, 4, 1048579, 3, 4, 1048579, 4, 6, 1048579, 1, 65529, 1048579, 1, 65530, 1048579, 1, 65531, 1048579, 1, 65532, 1048579, 0, 65532, 1048579, 0, 65531, 1048579, 0, 65530, 1048579, 0, 65529, 1048579, 3, 65529, 1048579, 3, 65530, 1048579, 3, 65531, 1048579, 3, 65532, 1048579, 4, 65532, 1048579, 4, 65531, 1048579, 4, 65530, 1048579, 4, 65529, 1048579, 5, 5, 1048579, 5, 4, 1048579, 5, 3, 1048579, 6, 5, 1048579, 6, 4, 1048579, 6, 3, 1048579, 5, 2, 1048579, 6, 2, 1048579, 6, 1, 1048579, 6, 0, 1048579, 5, 0, 1048579, 5, 65535, 1048579, 5, 65534, 1048579, 5, 1, 1048579, 6, 65535, 1048579, 6, 65534, 1048579, 6, 65533, 1048579, 5, 65533, 1048579, 5, 65532, 1048579, 6, 65532, 1048579, 6, 65531, 1048579, 5, 65531, 1048579, 5, 65530, 1048579, 6, 65530, 1048579)
+}

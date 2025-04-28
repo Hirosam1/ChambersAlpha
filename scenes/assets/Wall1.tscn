@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh8ocrahblisb"]
+
+[ext_resource type="Shader" uid="uid://cpmujfi6nxk23" path="res://scripts/shaders/tilemap_renderer.tres" id="1_ape47"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yuvsc"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u0le4"]
+load_path = "res://.godot/imported/debug_tileset.png-afd7a56ac3fa0c536d4aa0296a7cfcfd.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh57b"]
+render_priority = 0
+shader = ExtResource("1_ape47")
+shader_parameter/tile_tex = SubResource("CompressedTexture2D_u0le4")
+shader_parameter/tex_pos = 0
+shader_parameter/tex_dims = Vector2i(3, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_36o6p"]
+material = SubResource("ShaderMaterial_hh57b")
+
+[node name="Walls" type="Node3D"]
+
+[node name="Wall1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall1"]
+transform = Transform3D(1, -0.000472966, 0.000267026, 0.000472979, 1, -5.94392e-05, -0.000267005, 5.95359e-05, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1/StaticBody3D"]
+transform = Transform3D(0.999986, -0.00403578, 0.00344037, 0.0040158, 0.999975, 0.00580007, -0.00346367, -0.00578619, 0.999977, 0, 0, 0)
+shape = SubResource("BoxShape3D_yuvsc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1"]
+transform = Transform3D(1, -0.000472966, 0.000267026, 0.000472979, 1, -5.94393e-05, -0.000267005, 5.95359e-05, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_36o6p")
+skeleton = NodePath("../..")
