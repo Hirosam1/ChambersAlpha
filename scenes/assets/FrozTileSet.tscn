@@ -96,5 +96,5 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.
 mesh = SubResource("QuadMesh_shdu4")
 
 [node name="Gound2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00383323, -0.5, 0.000190854)
 mesh = SubResource("QuadMesh_t0b6e")
