@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://qttd8p6s71i6"]
+
+[ext_resource type="Shader" uid="uid://cpmujfi6nxk23" path="res://scripts/shaders/tilemap_renderer.tres" id="1_8d2dh"]
+[ext_resource type="Texture2D" uid="uid://dptr5my5pb2om" path="res://images/debug_tileset.png" id="2_2uy6x"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_8d2dh")
+shader_parameter/tileset_texture = ExtResource("2_2uy6x")
+shader_parameter/tex_dims = Vector2i(3, 2)
+shader_parameter/tex_pos = 1

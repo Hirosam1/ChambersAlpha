@@ -3,26 +3,32 @@
 [resource]
 code = "shader_type spatial;
 render_mode unshaded, cull_disabled;
-
-uniform sampler2D tile_tex : source_color, filter_nearest, repeat_disable;
-uniform int tex_pos;
-//UV x(0->1) y(0->y)
-// trUV x(1/tex_dims.x*tex_pos -> 1/tex_dims.x*(tex_pos+1)
-// 		y(1/tex_dims.y*tex_pos -> 1/tex_dims.y*(tex_pos+1)
+/** Tileset texture to be used. */
+uniform sampler2D tileset_texture : source_color, filter_nearest, repeat_disable;
+/** The number of tiles on the X and Y axis. */
 uniform ivec2 tex_dims;
+/** The position of the texture. */
+uniform int tex_pos;
+
+varying vec2 tiled_uv;
+
 vec2 get_tr_uv(vec2 uv){
-	float h_step = 1.0/float(tex_dims.x), v_step = 1.0/float(tex_dims.y);
-	float h_bias = float(tex_pos % int(tex_dims.x))/float(tex_dims.x);
-	float v_bias = float(tex_pos/int(tex_dims.x))/float(tex_dims.y);
-	return vec2(uv.x * h_step + h_bias, uv.y * v_step + v_bias);
+	float h_a = 1.0/float(tex_dims.x), v_a = 1.0/float(tex_dims.y);
+	float h_bias = float(tex_pos % tex_dims.x)/float(tex_dims.x);
+	float v_bias = float((tex_pos/tex_dims.x) % tex_dims.y)/float(tex_dims.y);
+	return vec2(uv.x * h_a + h_bias, uv.y * v_a + v_bias);
+}
+
+void vertex(){
+	/*Calculate new UV coordinates using varying on vertex step
+	to minimize calculations.*/
+	tiled_uv = get_tr_uv(UV);
 }
 
 void fragment() {
-	vec2 tr_uv = get_tr_uv(UV);
-	vec4 tex_color = texture(tile_tex,tr_uv);
+	vec4 tex_color = texture(tileset_texture,tiled_uv);
 	if(tex_color.a < 0.1){
 		discard;
 	}
 	ALBEDO.rgb = tex_color.rgb;
-}
-"
+}"
