@@ -8,21 +8,25 @@ uniform sampler2D tileset_texture : source_color, filter_nearest, repeat_disable
 /** The number of tiles on the X and Y axis. */
 uniform ivec2 tex_dims;
 /** The position of the texture. */
-uniform int tex_pos;
+uniform int tile;
 
 varying vec2 tiled_uv;
 
-vec2 get_tr_uv(vec2 uv){
+/** Transform the UV coordinates to the tile coordinates. 
+The resulting texture will depend on the tex_dims and tile parameters */
+vec2 get_tile_uv(vec2 uv){
+	//Tthe slope is based on the tiles on each dimension.
 	float h_a = 1.0/float(tex_dims.x), v_a = 1.0/float(tex_dims.y);
-	float h_bias = float(tex_pos % tex_dims.x)/float(tex_dims.x);
-	float v_bias = float((tex_pos/tex_dims.x) % tex_dims.y)/float(tex_dims.y);
+	//The bias is influenced by the selected tile
+	float h_bias = float(tile % tex_dims.x)/float(tex_dims.x);
+	float v_bias = float((tile/tex_dims.x) % tex_dims.y)/float(tex_dims.y);
 	return vec2(uv.x * h_a + h_bias, uv.y * v_a + v_bias);
 }
 
 void vertex(){
 	/*Calculate new UV coordinates using varying on vertex step
 	to minimize calculations.*/
-	tiled_uv = get_tr_uv(UV);
+	tiled_uv = get_tile_uv(UV);
 }
 
 void fragment() {

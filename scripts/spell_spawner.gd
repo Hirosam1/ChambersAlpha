@@ -7,7 +7,7 @@ var delay := 1.0
 @export
 var spell_asset : PackedScene
 
-var cast_elapsed_time := 0.0
+var cast_elapsed_time := delay
 
 func _process(delta: float) -> void:
 	cast_elapsed_time += delta

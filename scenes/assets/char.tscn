@@ -35,5 +35,5 @@ texture = ExtResource("2_uh7gb")
 [node name="SpellSpawner" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 script = ExtResource("3_nsedm")
-delay = 1.1
+delay = 1.15
 spell_asset = ExtResource("4_imgwi")

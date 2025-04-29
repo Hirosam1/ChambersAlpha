@@ -47,7 +47,7 @@ radius = 0.11
 
 [node name="SpellController" type="Area3D"]
 script = ExtResource("1_v7wfi")
-speed = 5.8
+speed = 5.9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
