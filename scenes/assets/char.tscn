@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c73iur01k4wui"]
 
 [ext_resource type="Script" uid="uid://c53ohwcujoc5d" path="res://scripts/char_controll.gd" id="1_uh7gb"]
-[ext_resource type="Texture2D" uid="uid://0prtyam61782" path="res://images/char.png" id="2_x0py8"]
+[ext_resource type="Texture2D" uid="uid://fm0qm068kafo" path="res://images/hero.png" id="2_uh7gb"]
 [ext_resource type="Script" uid="uid://bhfe3l6lb1v7y" path="res://scripts/spell_spawner.gd" id="3_nsedm"]
 [ext_resource type="PackedScene" uid="uid://dx4vxusb3bu75" path="res://scenes/assets/spell_1.tscn" id="4_imgwi"]
 
@@ -30,7 +30,7 @@ near = 1.55
 pixel_size = 0.032
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_x0py8")
+texture = ExtResource("2_uh7gb")
 
 [node name="SpellSpawner" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
