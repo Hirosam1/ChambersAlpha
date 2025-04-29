@@ -21,20 +21,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 shape = SubResource("SphereShape3D_unk8r")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.945519, 0.325568, 0, -0.325568, 0.945519, 0, 1.5, 1.2)
+transform = Transform3D(1, 0, 0, 0, 0.920505, 0.390731, 0, -0.390731, 0.920505, 0, 1.6, 1.1)
 projection = 1
-size = 3.2
-near = 1.49
+size = 3.3
+near = 1.55
 
 [node name="Char" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
 pixel_size = 0.032
 billboard = 1
 texture_filter = 0
 texture = ExtResource("2_x0py8")
 
-[node name="SpellSpawner" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 0, -0.07)
+[node name="SpellSpawner" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 script = ExtResource("3_nsedm")
-delay = 0.6
+delay = 1.1
 spell_asset = ExtResource("4_imgwi")

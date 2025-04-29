@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://2kydypb6a34p"]
 
 [ext_resource type="Shader" uid="uid://cpmujfi6nxk23" path="res://scripts/shaders/tilemap_renderer.tres" id="1_g6a1y"]
-[ext_resource type="Texture2D" uid="uid://dptr5my5pb2om" path="res://images/debug_tileset.png" id="2_4ph75"]
+[ext_resource type="Texture2D" uid="uid://cmhqoor0tx7m8" path="res://images/debug_tileset_v2.png" id="2_lmqs5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ph75"]
 render_priority = 0
 shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_4ph75")
+shader_parameter/tileset_texture = ExtResource("2_lmqs5")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tex_pos = 0
 
@@ -19,7 +19,7 @@ size = Vector3(1, 1, 0.1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lmqs5"]
 render_priority = 0
 shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_4ph75")
+shader_parameter/tileset_texture = ExtResource("2_lmqs5")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tex_pos = 1
 
@@ -29,7 +29,7 @@ material = SubResource("ShaderMaterial_lmqs5")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oevdq"]
 render_priority = 0
 shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_4ph75")
+shader_parameter/tileset_texture = ExtResource("2_lmqs5")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tex_pos = 2
 
@@ -39,7 +39,7 @@ material = SubResource("ShaderMaterial_oevdq")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6swgf"]
 render_priority = 0
 shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_4ph75")
+shader_parameter/tileset_texture = ExtResource("2_lmqs5")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tex_pos = 3
 
@@ -49,7 +49,7 @@ material = SubResource("ShaderMaterial_6swgf")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fih0f"]
 render_priority = 0
 shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_4ph75")
+shader_parameter/tileset_texture = ExtResource("2_lmqs5")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tex_pos = 4
 
