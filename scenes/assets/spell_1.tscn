@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dx4vxusb3bu75"]
 
 [ext_resource type="Script" uid="uid://ce2sf4buyn123" path="res://scripts/spell_animation.gd" id="1_alfpf"]
-[ext_resource type="Script" uid="uid://c2c4exqxu3qpw" path="res://scripts/spell_movement.gd" id="1_v7wfi"]
+[ext_resource type="Script" uid="uid://c2c4exqxu3qpw" path="res://scripts/spell_controller.gd" id="1_v7wfi"]
 [ext_resource type="Texture2D" uid="uid://datio37gdd5f1" path="res://images/spell1.png" id="2_v7wfi"]
 
 [sub_resource type="Animation" id="Animation_ejbsa"]
@@ -46,6 +46,8 @@ _data = {
 radius = 0.11
 
 [node name="SpellController" type="Area3D"]
+collision_layer = 3
+collision_mask = 5
 script = ExtResource("1_v7wfi")
 speed = 5.9
 
@@ -68,4 +70,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00272083, 0, 0.000314951)
 shape = SubResource("SphereShape3D_g2fuq")
 debug_color = Color(0, 0.882353, 0.258824, 0.823529)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

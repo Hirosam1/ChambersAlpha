@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2h1uhgb0jaq2"]
+[gd_scene load_steps=9 format=3 uid="uid://c2h1uhgb0jaq2"]
 
 [ext_resource type="Texture2D" uid="uid://bxjtu08jd748w" path="res://images/slime_enemy.png" id="1_dql47"]
+[ext_resource type="Script" uid="uid://brnp8re3cyssq" path="res://scenes/assets/slime_enemy.gd" id="1_sq6r8"]
 [ext_resource type="Script" uid="uid://cj3dlslur7t8m" path="res://scenes/assets/slime_enemy_animation.gd" id="2_w1kdo"]
+[ext_resource type="Script" uid="uid://buulyxqrxigr2" path="res://scenes/assets/health.gd" id="3_m4n30"]
 
 [sub_resource type="Animation" id="Animation_w1kdo"]
 length = 0.001
@@ -40,7 +42,11 @@ _data = {
 &"slime_idle": SubResource("Animation_dql47")
 }
 
-[node name="SlimeEnemy" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_w1kdo"]
+radius = 0.3
+
+[node name="SlimeEnemyController" type="Node3D"]
+script = ExtResource("1_sq6r8")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.032
@@ -54,3 +60,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_m4n30")
 }
 script = ExtResource("2_w1kdo")
+
+[node name="Health" type="Area3D" parent="." node_paths=PackedStringArray("controller")]
+script = ExtResource("3_m4n30")
+controller = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Health"]
+shape = SubResource("SphereShape3D_w1kdo")
+debug_color = Color(0.874496, 0.315802, 0.75082, 0.42)

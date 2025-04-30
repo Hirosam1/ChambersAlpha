@@ -1,8 +1,9 @@
 extends Area3D
+@export
+var damage := 4.0
 ## How fast (px/s) the spell will move.
 @export
 var speed := 5.0
-
 ## How long in seconds the spell lives.
 @export
 var lifetime := 4.0
@@ -27,3 +28,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	queue_free()
+
+func _on_area_entered(area: Area3D) -> void:
+	if(area.has_method("hurt")):
+		area.hurt(damage)
+		queue_free()
