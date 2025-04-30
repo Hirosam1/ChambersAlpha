@@ -93,13 +93,12 @@ vframes = 3
 [node name="SpellSpawner" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 script = ExtResource("3_nsedm")
-delay = 0.1
+delay = 1.15
 spell_asset = ExtResource("4_imgwi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("controller")]
 libraries = {
 &"": SubResource("AnimationLibrary_imgwi")
 }
-speed_scale = 2.5
 script = ExtResource("5_x0py8")
 controller = NodePath("..")
