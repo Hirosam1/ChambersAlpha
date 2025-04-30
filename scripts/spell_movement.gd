@@ -11,12 +11,14 @@ var is_cast := false
 var direction := Vector3()
 var elapsed_time : float
 
+## Necessary for spell to work, pass direction of travel
 func ready_spell(direction: Vector3):
 	elapsed_time = 0.0
 	self.direction = direction
 	is_cast = true
 
 func _process(delta: float) -> void:
+	# Accumulate time
 	elapsed_time += delta
 	if(elapsed_time >= lifetime):
 		queue_free()
