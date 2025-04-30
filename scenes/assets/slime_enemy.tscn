@@ -63,6 +63,7 @@ script = ExtResource("2_w1kdo")
 
 [node name="Health" type="Area3D" parent="." node_paths=PackedStringArray("controller")]
 script = ExtResource("3_m4n30")
+max_health = 7.0
 controller = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Health"]
