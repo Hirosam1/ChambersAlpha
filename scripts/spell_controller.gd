@@ -30,7 +30,7 @@ func _on_body_entered(body: Node3D) -> void:
 	queue_free()
 
 func _on_area_entered(area: Health) -> void:
-	if(area.has_method("hurt")):
+	if(area is Health):
 		var knockback_velocity := direction * knockback
 		area.hurt(damage, Vector2(knockback_velocity.x,knockback_velocity.z))
 		queue_free()
