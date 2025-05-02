@@ -149,4 +149,5 @@ controller = NodePath("..")
 controller = NodePath("..")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="damaged" from="Health" to="SpellSpawner" method="_on_health_damaged"]
 [connection signal="damaged" from="Health" to="AnimationPlayer" method="_on_health_damaged"]
