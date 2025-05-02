@@ -1,7 +1,7 @@
 [gd_resource type="MeshLibrary" load_steps=24 format=3 uid="uid://dkx0s8yalqt0u"]
 
 [ext_resource type="Shader" uid="uid://csu6ih5dju0eo" path="res://scripts/shaders/tilemap_renderer_crazy.tres" id="1_w4du8"]
-[ext_resource type="Texture2D" uid="uid://cmhqoor0tx7m8" path="res://images/debug_tileset_v2.png" id="2_n3hnd"]
+[ext_resource type="Texture2D" uid="uid://uks4tdmiiikm" path="res://images/droz_tileset_2._2.png" id="2_n3hnd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ph75"]
 render_priority = 0
