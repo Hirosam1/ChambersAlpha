@@ -152,4 +152,5 @@ debug_color = Color(0.932399, 0, 0.086289, 0.67451)
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="EnemySight/AreaOfSightIn" to="EnemySight" method="_on_area_of_sight_in_body_entered"]
 [connection signal="body_exited" from="EnemySight/AreaOfSightOut" to="EnemySight" method="_on_area_of_sight_out_body_exited"]
+[connection signal="damaged" from="Health" to="HurtBox" method="_on_health_damaged"]
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
