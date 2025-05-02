@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2h1uhgb0jaq2"]
+[gd_scene load_steps=12 format=3 uid="uid://c2h1uhgb0jaq2"]
 
 [ext_resource type="Texture2D" uid="uid://bxjtu08jd748w" path="res://images/slime_enemy.png" id="1_dql47"]
-[ext_resource type="Script" uid="uid://brnp8re3cyssq" path="res://scenes/assets/slime_enemy.gd" id="1_sq6r8"]
-[ext_resource type="Script" uid="uid://cj3dlslur7t8m" path="res://scenes/assets/slime_enemy_animation.gd" id="2_w1kdo"]
-[ext_resource type="Script" uid="uid://buulyxqrxigr2" path="res://scenes/assets/health.gd" id="3_m4n30"]
+[ext_resource type="Script" uid="uid://brnp8re3cyssq" path="res://scripts/slime_enemy.gd" id="1_sq6r8"]
+[ext_resource type="Script" uid="uid://cj3dlslur7t8m" path="res://scripts/slime_enemy_animation.gd" id="2_w1kdo"]
+[ext_resource type="Script" uid="uid://buulyxqrxigr2" path="res://scripts/health.gd" id="3_m4n30"]
+[ext_resource type="Script" uid="uid://bvqoycs07bpsa" path="res://scenes/assets/EnemySight.gd" id="5_ij7p7"]
 
 [sub_resource type="Animation" id="Animation_w1kdo"]
 length = 0.001
@@ -43,7 +44,13 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w1kdo"]
-radius = 0.3
+radius = 0.31
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sq6r8"]
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ij7p7"]
+radius = 3.5
 
 [node name="SlimeEnemyController" type="Node3D"]
 script = ExtResource("1_sq6r8")
@@ -62,6 +69,7 @@ libraries = {
 script = ExtResource("2_w1kdo")
 
 [node name="Health" type="Area3D" parent="." node_paths=PackedStringArray("controller")]
+collision_layer = 4
 script = ExtResource("3_m4n30")
 max_health = 7.0
 controller = NodePath("..")
@@ -69,3 +77,15 @@ controller = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Health"]
 shape = SubResource("SphereShape3D_w1kdo")
 debug_color = Color(0.874496, 0.315802, 0.75082, 0.42)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_sq6r8")
+
+[node name="AreaOfSight" type="Area3D" parent="."]
+script = ExtResource("5_ij7p7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaOfSight"]
+shape = SubResource("SphereShape3D_ij7p7")
+debug_color = Color(0.218579, 0.619966, 0.448332, 0.42)

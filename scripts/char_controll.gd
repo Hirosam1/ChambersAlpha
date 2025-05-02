@@ -12,6 +12,9 @@ var inpt_rot := 0.0
 var mouse_mov := Vector2()
 var is_captured_mode := true
 
+func die():
+	print("I died!")
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 

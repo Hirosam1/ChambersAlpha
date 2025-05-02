@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://2kydypb6a34p"]
+[gd_scene load_steps=14 format=3 uid="uid://y20bo6ygnb0c"]
 
-[ext_resource type="Shader" uid="uid://cpmujfi6nxk23" path="res://scripts/shaders/tilemap_renderer.tres" id="1_g6a1y"]
-[ext_resource type="Texture2D" uid="uid://cmhqoor0tx7m8" path="res://images/debug_tileset_v2.png" id="2_lmqs5"]
+[ext_resource type="Shader" uid="uid://csu6ih5dju0eo" path="res://scripts/shaders/tilemap_renderer_crazy.tres" id="1_swu5t"]
+[ext_resource type="Texture2D" uid="uid://cmhqoor0tx7m8" path="res://images/debug_tileset_v2.png" id="2_swu5t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ph75"]
 render_priority = 0
-shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_lmqs5")
+shader = ExtResource("1_swu5t")
+shader_parameter/tileset_texture = ExtResource("2_swu5t")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 0
 
@@ -18,8 +18,8 @@ size = Vector3(1, 1, 0.1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lmqs5"]
 render_priority = 0
-shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_lmqs5")
+shader = ExtResource("1_swu5t")
+shader_parameter/tileset_texture = ExtResource("2_swu5t")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 1
 
@@ -28,8 +28,8 @@ material = SubResource("ShaderMaterial_lmqs5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oevdq"]
 render_priority = 0
-shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_lmqs5")
+shader = ExtResource("1_swu5t")
+shader_parameter/tileset_texture = ExtResource("2_swu5t")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 2
 
@@ -38,8 +38,8 @@ material = SubResource("ShaderMaterial_oevdq")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6swgf"]
 render_priority = 0
-shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_lmqs5")
+shader = ExtResource("1_swu5t")
+shader_parameter/tileset_texture = ExtResource("2_swu5t")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 3
 
@@ -48,15 +48,15 @@ material = SubResource("ShaderMaterial_6swgf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fih0f"]
 render_priority = 0
-shader = ExtResource("1_g6a1y")
-shader_parameter/tileset_texture = ExtResource("2_lmqs5")
+shader = ExtResource("1_swu5t")
+shader_parameter/tileset_texture = ExtResource("2_swu5t")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 4
 
 [sub_resource type="QuadMesh" id="QuadMesh_t0b6e"]
 material = SubResource("ShaderMaterial_fih0f")
 
-[node name="FrozTileSet" type="Node3D"]
+[node name="FrozTileSetCrazy" type="Node3D"]
 
 [node name="Wall1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -0.000472963, 0.000267033, 0.000472979, 1, -5.94096e-05, -0.000267005, 5.95359e-05, 1, -0.000133517, 2.97048e-05, -0.5)

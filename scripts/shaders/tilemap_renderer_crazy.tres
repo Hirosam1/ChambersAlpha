@@ -1,10 +1,10 @@
-[gd_resource type="Shader" format=3 uid="uid://cpmujfi6nxk23"]
+[gd_resource type="Shader" format=3 uid="uid://csu6ih5dju0eo"]
 
 [resource]
 code = "shader_type spatial;
 render_mode unshaded, cull_disabled;
 /** Tileset texture to be used. */
-uniform sampler2D tileset_texture : source_color, filter_nearest, repeat_disable;
+uniform sampler2D tileset_texture : source_color, filter_nearest, repeat_enable;
 /** The number of tiles on the X and Y axis. */
 uniform ivec2 tex_dims;
 /** The position of the texture. */
@@ -29,8 +29,15 @@ void vertex(){
 	tiled_uv = get_tile_uv(UV);
 }
 
+vec2 crazy_distort_tex(vec2 uv, vec2 pos){
+	float factor = 7.0;
+	float xoffset = 0.0;
+	float yoffset = sin(pos.x*factor+mod(TIME*1.5,TAU))*0.015;
+	return vec2(uv.x+xoffset,uv.y+yoffset);
+}
+
 void fragment() {
-	vec4 tex_color = texture(tileset_texture,tiled_uv);
+	vec4 tex_color = texture(tileset_texture, crazy_distort_tex(tiled_uv, UV));
 	if(tex_color.a < 0.1){
 		discard;
 	}

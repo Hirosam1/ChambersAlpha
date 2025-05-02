@@ -1,16 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://c73iur01k4wui"]
+[gd_scene load_steps=13 format=3 uid="uid://c73iur01k4wui"]
 
 [ext_resource type="Script" uid="uid://c53ohwcujoc5d" path="res://scripts/char_controll.gd" id="1_uh7gb"]
 [ext_resource type="Texture2D" uid="uid://qtrc0i8q8yyu" path="res://images/hero_sheet.png" id="2_uh7gb"]
 [ext_resource type="Script" uid="uid://bhfe3l6lb1v7y" path="res://scripts/spell_spawner.gd" id="3_nsedm"]
 [ext_resource type="PackedScene" uid="uid://dx4vxusb3bu75" path="res://scenes/assets/spell_1.tscn" id="4_imgwi"]
-[ext_resource type="Script" uid="uid://fdatgm0nurqi" path="res://scenes/assets/char_animation.gd" id="5_x0py8"]
+[ext_resource type="Script" uid="uid://fdatgm0nurqi" path="res://scripts/char_animation.gd" id="5_x0py8"]
+[ext_resource type="Script" uid="uid://buulyxqrxigr2" path="res://scripts/health.gd" id="6_nsedm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_unk8r"]
 radius = 0.2
 
-[sub_resource type="Animation" id="Animation_x0py8"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_nsedm"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -24,8 +25,8 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_nsedm"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_x0py8"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,6 +64,9 @@ _data = {
 &"walk": SubResource("Animation_imgwi")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_imgwi"]
+radius = 0.31
+
 [node name="Char" type="CharacterBody3D"]
 transform = Transform3D(0.985408, 0, -0.170209, 0, 1, 0, 0.170209, 0, 0.985408, 0, 0, 0)
 collision_layer = 2
@@ -80,7 +84,7 @@ shape = SubResource("SphereShape3D_unk8r")
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 1.83, 1.52)
 projection = 1
 size = 3.5
-near = 2.0
+near = 1.9
 
 [node name="Char" type="Sprite3D" parent="."]
 pixel_size = 0.032
@@ -103,3 +107,14 @@ libraries = {
 speed_scale = 2.5
 script = ExtResource("5_x0py8")
 controller = NodePath("..")
+
+[node name="Health" type="Area3D" parent="." node_paths=PackedStringArray("controller")]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("6_nsedm")
+max_health = 7.0
+controller = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Health"]
+shape = SubResource("SphereShape3D_imgwi")
+debug_color = Color(0.874496, 0.315802, 0.75082, 0.42)
