@@ -3,7 +3,7 @@ extends Area3D
 @export
 var max_health := 2.0
 @export
-var controller: Node3D
+var controller: EnemyAiController
 
 @onready var current_health := max_health
 

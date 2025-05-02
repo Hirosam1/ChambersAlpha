@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://buulyxqrxigr2" path="res://scripts/health.gd" id="6_nsedm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_unk8r"]
-radius = 0.2
+radius = 0.17
 
 [sub_resource type="Animation" id="Animation_nsedm"]
 length = 0.001
@@ -65,11 +65,11 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_imgwi"]
-radius = 0.31
+radius = 0.268
 
 [node name="Char" type="CharacterBody3D"]
 transform = Transform3D(0.985408, 0, -0.170209, 0, 1, 0, 0.170209, 0, 0.985408, 0, 0, 0)
-collision_layer = 2
+collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_uh7gb")
 speed = 4.1
@@ -87,7 +87,7 @@ size = 3.5
 near = 1.9
 
 [node name="Char" type="Sprite3D" parent="."]
-pixel_size = 0.032
+pixel_size = 0.0313
 billboard = 1
 texture_filter = 0
 texture = ExtResource("2_uh7gb")
