@@ -10,7 +10,7 @@ shader_parameter/tileset_texture = ExtResource("2_vd1hv")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 0
 
-[sub_resource type="QuadMesh" id="QuadMesh_taffe"]
+[sub_resource type="QuadMesh" id="QuadMesh_vd1hv"]
 material = SubResource("ShaderMaterial_4ph75")
 
 [sub_resource type="Image" id="Image_vd1hv"]
@@ -22,7 +22,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_7dak5"]
+[sub_resource type="ImageTexture" id="ImageTexture_wxmlg"]
 image = SubResource("Image_vd1hv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yuvsc"]
@@ -35,7 +35,7 @@ shader_parameter/tileset_texture = ExtResource("2_vd1hv")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 1
 
-[sub_resource type="QuadMesh" id="QuadMesh_yhdw4"]
+[sub_resource type="QuadMesh" id="QuadMesh_7dak5"]
 material = SubResource("ShaderMaterial_lmqs5")
 
 [sub_resource type="Image" id="Image_taffe"]
@@ -47,7 +47,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_o5yci"]
+[sub_resource type="ImageTexture" id="ImageTexture_1mjaj"]
 image = SubResource("Image_taffe")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oevdq"]
@@ -57,7 +57,7 @@ shader_parameter/tileset_texture = ExtResource("2_vd1hv")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 2
 
-[sub_resource type="QuadMesh" id="QuadMesh_xy264"]
+[sub_resource type="QuadMesh" id="QuadMesh_o5yci"]
 material = SubResource("ShaderMaterial_oevdq")
 
 [sub_resource type="Image" id="Image_wxmlg"]
@@ -69,7 +69,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_kgn63"]
+[sub_resource type="ImageTexture" id="ImageTexture_wbloj"]
 image = SubResource("Image_wxmlg")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6swgf"]
@@ -79,7 +79,7 @@ shader_parameter/tileset_texture = ExtResource("2_vd1hv")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 3
 
-[sub_resource type="QuadMesh" id="QuadMesh_nigck"]
+[sub_resource type="QuadMesh" id="QuadMesh_kgn63"]
 material = SubResource("ShaderMaterial_6swgf")
 
 [sub_resource type="Image" id="Image_7dak5"]
@@ -91,7 +91,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_5b6e2"]
+[sub_resource type="ImageTexture" id="ImageTexture_6swgf"]
 image = SubResource("Image_7dak5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fih0f"]
@@ -101,7 +101,7 @@ shader_parameter/tileset_texture = ExtResource("2_vd1hv")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 4
 
-[sub_resource type="QuadMesh" id="QuadMesh_qb6hp"]
+[sub_resource type="QuadMesh" id="QuadMesh_5b6e2"]
 material = SubResource("ShaderMaterial_fih0f")
 
 [sub_resource type="Image" id="Image_yhdw4"]
@@ -113,7 +113,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_fih0f"]
+[sub_resource type="ImageTexture" id="ImageTexture_shakw"]
 image = SubResource("Image_yhdw4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7x83"]
@@ -123,7 +123,7 @@ shader_parameter/tileset_texture = ExtResource("2_vd1hv")
 shader_parameter/tex_dims = Vector2i(3, 2)
 shader_parameter/tile = 5
 
-[sub_resource type="QuadMesh" id="QuadMesh_nh6py"]
+[sub_resource type="QuadMesh" id="QuadMesh_fih0f"]
 material = SubResource("ShaderMaterial_t7x83")
 
 [sub_resource type="Image" id="Image_1mjaj"]
@@ -135,55 +135,55 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_0s1wl"]
+[sub_resource type="ImageTexture" id="ImageTexture_c74cm"]
 image = SubResource("Image_1mjaj")
 
 [resource]
 item/0/name = "Wall1"
-item/0/mesh = SubResource("QuadMesh_taffe")
+item/0/mesh = SubResource("QuadMesh_vd1hv")
 item/0/mesh_transform = Transform3D(1, -0.000472963, 0.000267033, 0.000472979, 1, -5.94096e-05, -0.000267005, 5.95359e-05, 1, -0.000133517, 2.97048e-05, -0.5)
 item/0/mesh_cast_shadow = 1
 item/0/shapes = [SubResource("BoxShape3D_yuvsc"), Transform3D(0.999983, -0.00451028, 0.00370465, 0.00448898, 0.999973, 0.00574229, -0.00373043, -0.00572558, 0.999976, -0.000133517, 2.97048e-05, -0.5)]
 item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/0/navigation_layers = 1
-item/0/preview = SubResource("ImageTexture_7dak5")
+item/0/preview = SubResource("ImageTexture_wxmlg")
 item/1/name = "Wall2"
-item/1/mesh = SubResource("QuadMesh_yhdw4")
+item/1/mesh = SubResource("QuadMesh_7dak5")
 item/1/mesh_transform = Transform3D(1, -0.000472963, 0.000267033, 0.000472979, 1, -5.94096e-05, -0.000267005, 5.95359e-05, 1, -0.000133514, 2.97048e-05, -0.5)
 item/1/mesh_cast_shadow = 1
 item/1/shapes = [SubResource("BoxShape3D_yuvsc"), Transform3D(0.999983, -0.00451028, 0.00370465, 0.00448898, 0.999973, 0.00574229, -0.00373043, -0.00572558, 0.999976, -0.000133514, 2.97048e-05, -0.5)]
 item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/1/navigation_layers = 1
-item/1/preview = SubResource("ImageTexture_o5yci")
+item/1/preview = SubResource("ImageTexture_1mjaj")
 item/2/name = "Wall3"
-item/2/mesh = SubResource("QuadMesh_xy264")
+item/2/mesh = SubResource("QuadMesh_o5yci")
 item/2/mesh_transform = Transform3D(1, -0.000472963, 0.000267033, 0.000472979, 1, -5.94096e-05, -0.000267005, 5.95359e-05, 1, -0.000133517, 2.97048e-05, -0.5)
 item/2/mesh_cast_shadow = 1
 item/2/shapes = [SubResource("BoxShape3D_yuvsc"), Transform3D(0.999983, -0.00451028, 0.00370465, 0.00448898, 0.999973, 0.00574229, -0.00373043, -0.00572558, 0.999976, -0.000133517, 2.97048e-05, -0.5)]
 item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/2/navigation_layers = 1
-item/2/preview = SubResource("ImageTexture_kgn63")
+item/2/preview = SubResource("ImageTexture_wbloj")
 item/3/name = "Gound1"
-item/3/mesh = SubResource("QuadMesh_nigck")
+item/3/mesh = SubResource("QuadMesh_kgn63")
 item/3/mesh_transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, 0)
 item/3/mesh_cast_shadow = 1
 item/3/shapes = []
 item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/navigation_layers = 1
-item/3/preview = SubResource("ImageTexture_5b6e2")
+item/3/preview = SubResource("ImageTexture_6swgf")
 item/4/name = "Gound2"
-item/4/mesh = SubResource("QuadMesh_qb6hp")
+item/4/mesh = SubResource("QuadMesh_5b6e2")
 item/4/mesh_transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00383323, -0.5, 0.000190854)
 item/4/mesh_cast_shadow = 1
 item/4/shapes = []
 item/4/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/4/navigation_layers = 1
-item/4/preview = SubResource("ImageTexture_fih0f")
+item/4/preview = SubResource("ImageTexture_shakw")
 item/5/name = "Gound3"
-item/5/mesh = SubResource("QuadMesh_nh6py")
+item/5/mesh = SubResource("QuadMesh_fih0f")
 item/5/mesh_transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00383323, -0.5, 0.000190854)
 item/5/mesh_cast_shadow = 1
 item/5/shapes = []
 item/5/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/5/navigation_layers = 1
-item/5/preview = SubResource("ImageTexture_0s1wl")
+item/5/preview = SubResource("ImageTexture_c74cm")

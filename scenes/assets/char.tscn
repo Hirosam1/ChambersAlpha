@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://buulyxqrxigr2" path="res://scripts/health.gd" id="6_nsedm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_unk8r"]
-radius = 0.2
+radius = 0.25
 
 [sub_resource type="Animation" id="Animation_nsedm"]
 length = 0.001
@@ -65,7 +65,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_imgwi"]
-radius = 0.268
+radius = 0.26
 
 [node name="Char" type="CharacterBody3D"]
 transform = Transform3D(0.985408, 0, -0.170209, 0, 1, 0, 0.170209, 0, 0.985408, 0, 0, 0)
@@ -82,10 +82,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 shape = SubResource("SphereShape3D_unk8r")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 2.4, 1.52)
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573577, 0, -0.573577, 0.819152, 0, 3.1, 1.52)
 projection = 1
-size = 4.0
-near = 2.4
+size = 4.4
+near = 2.8
 
 [node name="Char" type="Sprite3D" parent="."]
 pixel_size = 0.0313

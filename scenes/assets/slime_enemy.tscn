@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2h1uhgb0jaq2"]
+[gd_scene load_steps=15 format=3 uid="uid://c2h1uhgb0jaq2"]
 
 [ext_resource type="Texture2D" uid="uid://bxjtu08jd748w" path="res://images/slime_enemy.png" id="1_dql47"]
 [ext_resource type="Script" uid="uid://brnp8re3cyssq" path="res://scripts/enemy_ai.gd" id="1_sq6r8"]
@@ -31,7 +31,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
@@ -42,6 +42,19 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ij7p7"]
 resource_name = "slime_hurt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
 
 [sub_resource type="Animation" id="Animation_dql47"]
 resource_name = "slime_idle"
@@ -50,7 +63,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
@@ -71,7 +84,10 @@ _data = {
 radius = 0.31
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ij7p7"]
-radius = 3.3
+radius = 3.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p2bkd"]
+radius = 6.3
 
 [node name="SlimeEnemy" type="CharacterBody3D"]
 collision_layer = 8
@@ -84,12 +100,13 @@ speed = 1.7
 shape = SubResource("SphereShape3D_bwd8p")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00549984, -0.00379515, 0.00225687)
 pixel_size = 0.0313
 billboard = 1
 texture_filter = 0
 texture = ExtResource("1_dql47")
 hframes = 4
-vframes = 2
+vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -101,22 +118,33 @@ script = ExtResource("2_w1kdo")
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("3_m4n30")
-max_health = 7.0
+max_health = 6.0
 controller = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Health"]
 shape = SubResource("SphereShape3D_w1kdo")
 debug_color = Color(0.874496, 0.315802, 0.75082, 0.42)
 
-[node name="AreaOfSight" type="Area3D" parent="." node_paths=PackedStringArray("ai_controller")]
-collision_layer = 4
-collision_mask = 2
+[node name="EnemySight" type="Node3D" parent="." node_paths=PackedStringArray("ai_controller")]
 script = ExtResource("5_ij7p7")
 ai_controller = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaOfSight"]
-shape = SubResource("SphereShape3D_ij7p7")
-debug_color = Color(0.218579, 0.619966, 0.448332, 0.42)
+[node name="AreaOfSightIn" type="Area3D" parent="EnemySight"]
+collision_layer = 4
+collision_mask = 2
 
-[connection signal="area_entered" from="AreaOfSight" to="AreaOfSight" method="_on_area_entered"]
-[connection signal="area_exited" from="AreaOfSight" to="AreaOfSight" method="_on_area_exited"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySight/AreaOfSightIn"]
+shape = SubResource("SphereShape3D_ij7p7")
+debug_color = Color(0.826917, 0.391097, 0.193198, 0.121569)
+
+[node name="AreaOfSightOut" type="Area3D" parent="EnemySight"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySight/AreaOfSightOut"]
+shape = SubResource("SphereShape3D_p2bkd")
+debug_color = Color(0.183999, 0.784061, 0.555252, 0.0705882)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="EnemySight/AreaOfSightIn" to="EnemySight" method="_on_area_of_sight_in_area_entered"]
+[connection signal="area_exited" from="EnemySight/AreaOfSightOut" to="EnemySight" method="_on_area_of_sight_out_area_exited"]

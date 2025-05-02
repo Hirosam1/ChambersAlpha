@@ -4,8 +4,11 @@ extends CharacterBody3D
 @export var speed = 3.0
 @onready var animation_player := $AnimationPlayer
 
-var is_alive = true
+
 var current_target: Node3D
+#States
+var is_alive = true
+var is_hurt := false
 var is_chasing := false
 
 func die() -> void:
@@ -13,6 +16,12 @@ func die() -> void:
 		is_alive = false
 		animation_player.play("slime_death")
 	#queue_free()
+	
+func hurt(velocity_knockback: Vector2) -> void:
+	if(is_alive):
+		animation_player.play("slime_hurt")
+		velocity = Vector3(velocity_knockback.x,0.0,velocity_knockback.y)/0.6
+		is_hurt = true
 
 func start_chase_target(target: Node) -> void:
 	current_target = target
@@ -23,10 +32,16 @@ func stop_chasing() -> void:
 	is_chasing = false
 	
 func _process(delta: float) -> void:
-	if(is_chasing and is_alive):
-		var direction := (current_target.global_position - global_position).normalized()
-		velocity = direction*speed
-	else:
-		velocity = Vector3()
-		
+	if(not is_hurt):
+		if(is_chasing and is_alive):
+			var direction := (current_target.global_position - global_position).normalized()
+			velocity = direction*speed
+		else:
+			velocity = Vector3()
+
 	move_and_slide()
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if(anim_name == "slime_hurt"):
+		is_hurt = false
+		animation_player.play("slime_idle")

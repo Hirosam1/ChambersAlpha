@@ -79,10 +79,6 @@ transform = Transform3D(1, -5.26157e-12, 0, 1.54898e-11, 1, 9.45874e-11, 2.91038
 transform = Transform3D(0.999986, -0.00403578, 0.00344037, 0.0040158, 0.999975, 0.00580007, -0.00346367, -0.00578619, 0.999977, 0, 0, 0)
 shape = SubResource("BoxShape3D_yuvsc")
 
-[node name="DebugPos" type="Marker3D" parent="Wall1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-gizmo_extents = 0.32
-
 [node name="Wall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -0.000472963, 0.000267033, 0.000472979, 1, -5.94096e-05, -0.000267005, 5.95359e-05, 1, -0.000133514, 2.97048e-05, -0.5)
 mesh = SubResource("QuadMesh_oevdq")
