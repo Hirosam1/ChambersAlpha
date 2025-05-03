@@ -171,9 +171,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 shape = SubResource("SphereShape3D_unk8r")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.907778, 0.419452, 0, -0.419452, 0.907778, 0, 8.195, 14.67)
+transform = Transform3D(1, 0, 0, 0, 0.907778, 0.419452, 0, -0.419452, 0.907778, 0, 8.35, 14.67)
+projection = 1
 fov = 13.0
-size = 3.5
+size = 4.0
 near = 16.535
 
 [node name="Char" type="Sprite3D" parent="."]

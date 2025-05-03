@@ -20,7 +20,6 @@ func die():
 	print("I died! XP")
 	is_alive = false
 	velocity = Vector3()
-	$Char.render_priority = -1
 	
 func hurt(velocity_knockback: Vector2) -> void:
 	is_hurt = true
