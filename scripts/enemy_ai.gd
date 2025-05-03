@@ -40,8 +40,8 @@ func start_chase_target(target: Node) -> void:
 	
 func forget_target() -> void:
 	current_target = null
+	is_chasing = false
 	
-
 func _ready() -> void:
 	offset_elapsed_time = rng.randf_range(0.0, offset_delay_time)
 	animation_player.speed_scale += randf_range(-0.05,0.05)
