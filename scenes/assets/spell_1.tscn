@@ -51,8 +51,8 @@ collision_mask = 5
 script = ExtResource("1_v7wfi")
 damage = 2.0
 knockback = 0.6
-speed = 5.9
-lifetime = 3.0
+speed = 4.6
+lifetime = 2.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

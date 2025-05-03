@@ -39,6 +39,10 @@ func _process(delta: float) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			
+	
+	if(Input.is_action_just_pressed("debuc_restart")):
+		get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
 	if(is_captured_mode):
