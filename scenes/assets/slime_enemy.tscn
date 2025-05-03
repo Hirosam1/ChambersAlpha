@@ -82,10 +82,10 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ij7p7"]
-radius = 3.5
+radius = 4.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p2bkd"]
-radius = 6.2
+radius = 6.7
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ppeoo"]
 radius = 0.42
@@ -138,7 +138,7 @@ debug_color = Color(0.184314, 0.784314, 0.556863, 0.286275)
 [node name="Health" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("6_p2bkd")]
 collision_layer = 4
 collision_mask = 2
-max_health = 6.0
+max_health = 7.0
 controller = NodePath("..")
 
 [node name="HurtBox" type="Area3D" parent="."]
@@ -152,6 +152,8 @@ debug_color = Color(0.932399, 0, 0.086289, 0.67451)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="EnemySight/AreaOfSightIn" to="EnemySight" method="_on_area_of_sight_in_body_entered"]
+[connection signal="body_entered" from="EnemySight/AreaOfSightOut" to="EnemySight" method="_on_area_of_sight_out_body_entered"]
 [connection signal="body_exited" from="EnemySight/AreaOfSightOut" to="EnemySight" method="_on_area_of_sight_out_body_exited"]
+[connection signal="damaged" from="Health" to="EnemySight" method="_on_health_damaged"]
 [connection signal="damaged" from="Health" to="HurtBox" method="_on_health_damaged"]
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]

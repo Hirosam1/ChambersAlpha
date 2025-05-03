@@ -55,11 +55,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.99036, 4.76837e-07, -1.477
 [node name="SlimeEnemy4" parent="." instance=ExtResource("3_g2fuq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.356, 0, -1.589)
 
+[node name="SlimeEnemy10" parent="." instance=ExtResource("3_g2fuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4173, 0, 2.76821)
+
+[node name="SlimeEnemy11" parent="." instance=ExtResource("3_g2fuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4569, -0.00314617, 2.19241)
+
 [node name="SlimeEnemy5" parent="." instance=ExtResource("3_g2fuq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.059, 0, 2.939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5193, 0, 1.15062)
+
+[node name="SlimeEnemy9" parent="." instance=ExtResource("3_g2fuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9877, 0, 4.47011)
 
 [node name="SlimeEnemy6" parent="." instance=ExtResource("3_g2fuq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2813, 0, -7.00084)
+
+[node name="SlimeEnemy12" parent="." instance=ExtResource("3_g2fuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1101, 0, 1.07177)
+
+[node name="SlimeEnemy8" parent="." instance=ExtResource("3_g2fuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2179, 4.76837e-07, 6.92573)
 
 [node name="SlimeEnemy7" parent="." instance=ExtResource("3_g2fuq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3423, 0, 5.57929)

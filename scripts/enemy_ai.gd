@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var animation_player := $AnimationPlayer
 @onready var rng := RandomNumberGenerator.new()
 
-var offset_delay_time = .7
+var offset_delay_time = .8
 var offset_elapsed_time = 0.0
 
 var current_target: PlayerHero
@@ -50,8 +50,8 @@ func _process(delta: float) -> void:
 	offset_elapsed_time += delta
 	if(not is_hurt and is_alive):
 		if(offset_elapsed_time > offset_delay_time):
-			var range := .3
-			offset_angle = rng.randf_range(-range,range)
+			var rot_range := .35
+			offset_angle = rng.randf_range(-rot_range,rot_range)
 			offset_elapsed_time = 0.0
 		if(is_chasing and current_target.is_alive):
 			var direction := (current_target.global_position - global_position).normalized()
