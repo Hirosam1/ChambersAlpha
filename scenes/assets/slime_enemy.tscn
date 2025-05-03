@@ -82,10 +82,10 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ij7p7"]
-radius = 4.0
+radius = 3.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p2bkd"]
-radius = 7.2
+radius = 6.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ppeoo"]
 radius = 0.42
@@ -95,7 +95,7 @@ collision_layer = 8
 collision_mask = 7
 axis_lock_linear_y = true
 script = ExtResource("1_sq6r8")
-speed = 1.8
+speed = 1.7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_bwd8p")
