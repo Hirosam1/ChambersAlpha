@@ -117,6 +117,7 @@ script = ExtResource("2_w1kdo")
 [node name="EnemySight" type="Node3D" parent="." node_paths=PackedStringArray("ai_controller")]
 script = ExtResource("5_ij7p7")
 ai_controller = NodePath("..")
+obstacle_mask = 1
 
 [node name="AreaOfSightIn" type="Area3D" parent="EnemySight"]
 collision_layer = 4

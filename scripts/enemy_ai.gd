@@ -31,13 +31,15 @@ func hurt(velocity_knockback: Vector2) -> void:
 		#we finish the animation we traveled roughtly the determined distance.
 		velocity = Vector3(velocity_knockback.x,0.0,velocity_knockback.y)/0.6
 
+func choose_target(target: Node3D):
+	current_target = target
+
 func start_chase_target(target: Node) -> void:
 	current_target = target
 	is_chasing = true
 	
-func stop_chasing() -> void:
+func forget_target() -> void:
 	current_target = null
-	is_chasing = false
 	
 
 func _ready() -> void:
@@ -58,7 +60,7 @@ func _process(delta: float) -> void:
 		else:
 			velocity = Vector3()
 	move_and_slide()
-
+	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "slime_hurt"):
 		is_hurt = false
