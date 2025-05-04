@@ -163,7 +163,7 @@ collision_layer = 8
 collision_mask = 7
 axis_lock_linear_y = true
 script = ExtResource("1_uh7gb")
-speed = 3.9
+speed = 2.5
 mouse_sensitivity = 0.18
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -171,11 +171,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 shape = SubResource("SphereShape3D_unk8r")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.907778, 0.419452, 0, -0.419452, 0.907778, 0, 8.35, 14.67)
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 2.2, 1.1)
 projection = 1
 fov = 13.0
-size = 4.0
-near = 16.535
+size = 4.15
+near = 1.65
 
 [node name="Char" type="Sprite3D" parent="."]
 pixel_size = 0.0313
@@ -188,7 +188,7 @@ vframes = 4
 [node name="SpellSpawner" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 script = ExtResource("3_nsedm")
-delay = 1.6
+delay = 1.1
 spell_asset = ExtResource("4_imgwi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("controller")]
@@ -199,6 +199,7 @@ script = ExtResource("5_x0py8")
 controller = NodePath("..")
 
 [node name="Health" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("6_nsedm")]
+max_health = 20.0
 controller = NodePath("..")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

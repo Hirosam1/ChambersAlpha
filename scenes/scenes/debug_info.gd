@@ -6,4 +6,4 @@ extends CanvasLayer
 
 func _process(delta: float) -> void:
 	var health: Health = hero_controller.get_node("Health")
-	health_tag.text = "Health: " + str(health.current_health)
+	health_tag.text = "Health: " + str("%0.2f" % health.current_health)

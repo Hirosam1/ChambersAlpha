@@ -82,10 +82,10 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ij7p7"]
-radius = 3.8
+radius = 4.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p2bkd"]
-radius = 6.8
+radius = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ppeoo"]
 radius = 0.42
@@ -95,7 +95,7 @@ collision_layer = 8
 collision_mask = 7
 axis_lock_linear_y = true
 script = ExtResource("1_sq6r8")
-speed = 1.7
+speed = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_bwd8p")
@@ -138,13 +138,14 @@ debug_color = Color(0.184314, 0.784314, 0.556863, 0.286275)
 [node name="Health" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("6_p2bkd")]
 collision_layer = 4
 collision_mask = 2
-max_health = 7.0
+max_health = 8.0
 controller = NodePath("..")
 
 [node name="HurtBox" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("6_bwd8p")
+damage = 1.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("SphereShape3D_ppeoo")

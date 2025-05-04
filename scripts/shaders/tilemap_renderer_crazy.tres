@@ -4,7 +4,7 @@
 code = "shader_type spatial;
 render_mode unshaded, cull_disabled;
 /** Tileset texture to be used. */
-uniform sampler2D tileset_texture : source_color, filter_nearest, repeat_enable;
+uniform sampler2D tileset_texture : source_color, filter_nearest;
 /** The number of tiles on the X and Y axis. */
 uniform ivec2 tex_dims;
 /** The position of the texture. */
@@ -30,8 +30,10 @@ void vertex(){
 }
 
 vec2 crazy_distort_tex(vec2 uv, vec2 pos){
-	float factor = 7.0;
+	const float factor = 7.0;
 	float xoffset = 0.0;
+	//We use the position.x on the UV texture as the x
+	//We increment by adding the current time to x as function of sin
 	float yoffset = sin(pos.x*factor+mod(TIME*1.5,TAU))*0.015;
 	return vec2(uv.x+xoffset,uv.y+yoffset);
 }

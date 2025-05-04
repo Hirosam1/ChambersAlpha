@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://y20bo6ygnb0c"]
+[gd_scene load_steps=19 format=3 uid="uid://y20bo6ygnb0c"]
 
 [ext_resource type="Shader" uid="uid://csu6ih5dju0eo" path="res://scripts/shaders/tilemap_renderer_crazy.tres" id="1_swu5t"]
 [ext_resource type="Texture2D" uid="uid://uks4tdmiiikm" path="res://images/droz_tileset_2._2.png" id="2_mfs3f"]
@@ -35,6 +35,19 @@ shader_parameter/tile = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_t7x83"]
 material = SubResource("ShaderMaterial_oevdq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ph75"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.670588, 0.529412, 0.0980392)
+
+[sub_resource type="QuadMesh" id="QuadMesh_4nxsa"]
+material = SubResource("StandardMaterial3D_4ph75")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_swu5t"]
+size = Vector3(1, 1, 0.1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6swgf"]
 render_priority = 0
@@ -104,6 +117,17 @@ transform = Transform3D(1, -5.26157e-12, 0, 1.54898e-11, 1, 9.45874e-11, 2.91038
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3/StaticBody3D"]
 transform = Transform3D(0.999986, -0.00403578, 0.00344037, 0.0040158, 0.999975, 0.00580007, -0.00346367, -0.00578619, 0.999977, 0, 0, 0)
 shape = SubResource("BoxShape3D_yuvsc")
+
+[node name="WallInvisible" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -0.000472963, 0.000267033, 0.000472979, 1, -5.94096e-05, -0.000267005, 5.95359e-05, 1, -0.000133517, 2.97048e-05, -0.5)
+mesh = SubResource("QuadMesh_4nxsa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallInvisible"]
+transform = Transform3D(1, -5.26157e-12, 0, 1.54898e-11, 1, 9.45874e-11, 2.91038e-11, 3.63798e-12, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallInvisible/StaticBody3D"]
+transform = Transform3D(0.999986, -0.00403578, 0.00344037, 0.0040158, 0.999975, 0.00580007, -0.00346367, -0.00578619, 0.999977, 0, 0, 0)
+shape = SubResource("BoxShape3D_swu5t")
 
 [node name="Gound1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, 0)
