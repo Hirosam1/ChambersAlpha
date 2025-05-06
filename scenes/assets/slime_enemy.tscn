@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dfeydpej1u85p" path="res://scenes/assets/health.tscn" id="6_p2bkd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bwd8p"]
-radius = 0.37
+radius = 0.3
 
 [sub_resource type="Animation" id="Animation_w1kdo"]
 length = 0.001
@@ -88,7 +88,7 @@ radius = 4.5
 radius = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ppeoo"]
-radius = 0.42
+radius = 0.38
 
 [node name="SlimeEnemy" type="CharacterBody3D"]
 collision_layer = 8
@@ -114,24 +114,24 @@ libraries = {
 }
 script = ExtResource("2_w1kdo")
 
-[node name="EnemySight" type="Node3D" parent="." node_paths=PackedStringArray("ai_controller")]
+[node name="EnemyAiSight" type="Node3D" parent="." node_paths=PackedStringArray("ai_controller")]
 script = ExtResource("5_ij7p7")
 ai_controller = NodePath("..")
 obstacle_mask = 1
 
-[node name="AreaOfSightIn" type="Area3D" parent="EnemySight"]
+[node name="AreaOfSightIn" type="Area3D" parent="EnemyAiSight"]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySight/AreaOfSightIn"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAiSight/AreaOfSightIn"]
 shape = SubResource("SphereShape3D_ij7p7")
 debug_color = Color(0.827451, 0.392157, 0.192157, 0.27451)
 
-[node name="AreaOfSightOut" type="Area3D" parent="EnemySight"]
+[node name="AreaOfSightOut" type="Area3D" parent="EnemyAiSight"]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySight/AreaOfSightOut"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAiSight/AreaOfSightOut"]
 shape = SubResource("SphereShape3D_p2bkd")
 debug_color = Color(0.184314, 0.784314, 0.556863, 0.286275)
 
@@ -152,9 +152,9 @@ shape = SubResource("SphereShape3D_ppeoo")
 debug_color = Color(0.932399, 0, 0.086289, 0.67451)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="body_entered" from="EnemySight/AreaOfSightIn" to="EnemySight" method="_on_area_of_sight_in_body_entered"]
-[connection signal="body_entered" from="EnemySight/AreaOfSightOut" to="EnemySight" method="_on_area_of_sight_out_body_entered"]
-[connection signal="body_exited" from="EnemySight/AreaOfSightOut" to="EnemySight" method="_on_area_of_sight_out_body_exited"]
-[connection signal="damaged" from="Health" to="EnemySight" method="_on_health_damaged"]
+[connection signal="body_entered" from="EnemyAiSight/AreaOfSightIn" to="EnemyAiSight" method="_on_area_of_sight_in_body_entered"]
+[connection signal="body_entered" from="EnemyAiSight/AreaOfSightOut" to="EnemyAiSight" method="_on_area_of_sight_out_body_entered"]
+[connection signal="body_exited" from="EnemyAiSight/AreaOfSightOut" to="EnemyAiSight" method="_on_area_of_sight_out_body_exited"]
+[connection signal="damaged" from="Health" to="EnemyAiSight" method="_on_health_damaged"]
 [connection signal="damaged" from="Health" to="HurtBox" method="_on_health_damaged"]
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]

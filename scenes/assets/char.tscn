@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://c73iur01k4wui"]
 
-[ext_resource type="Script" uid="uid://c53ohwcujoc5d" path="res://scripts/char_controll.gd" id="1_uh7gb"]
+[ext_resource type="Script" uid="uid://c53ohwcujoc5d" path="res://scripts/hero/char_controll.gd" id="1_uh7gb"]
 [ext_resource type="Texture2D" uid="uid://qtrc0i8q8yyu" path="res://images/hero_sheet.png" id="2_uh7gb"]
-[ext_resource type="Script" uid="uid://bhfe3l6lb1v7y" path="res://scripts/spell_spawner.gd" id="3_nsedm"]
+[ext_resource type="Script" uid="uid://bhfe3l6lb1v7y" path="res://scripts/hero/spell_spawner.gd" id="3_nsedm"]
 [ext_resource type="PackedScene" uid="uid://dx4vxusb3bu75" path="res://scenes/assets/spell_1.tscn" id="4_imgwi"]
-[ext_resource type="Script" uid="uid://fdatgm0nurqi" path="res://scripts/char_animation.gd" id="5_x0py8"]
+[ext_resource type="Script" uid="uid://fdatgm0nurqi" path="res://scripts/hero/char_animation.gd" id="5_x0py8"]
 [ext_resource type="PackedScene" uid="uid://dfeydpej1u85p" path="res://scenes/assets/health.tscn" id="6_nsedm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_unk8r"]
@@ -170,12 +170,21 @@ mouse_sensitivity = 0.18
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 shape = SubResource("SphereShape3D_unk8r")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3DOrth" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 2.2, 1.1)
+visible = false
 projection = 1
+current = true
 fov = 13.0
 size = 4.15
 near = 1.65
+
+[node name="Camera3DPers" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.891007, 0.453991, 0, -0.453991, 0.891007, 0, 13.1, 22)
+current = true
+fov = 10.0
+size = 4.15
+near = 25.15
 
 [node name="Char" type="Sprite3D" parent="."]
 pixel_size = 0.0313

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dx4vxusb3bu75"]
 
-[ext_resource type="Script" uid="uid://ce2sf4buyn123" path="res://scripts/spell_animation.gd" id="1_alfpf"]
-[ext_resource type="Script" uid="uid://c2c4exqxu3qpw" path="res://scripts/spell_controller.gd" id="1_v7wfi"]
+[ext_resource type="Script" uid="uid://ce2sf4buyn123" path="res://scripts/spells/spell_animation.gd" id="1_alfpf"]
+[ext_resource type="Script" uid="uid://c2c4exqxu3qpw" path="res://scripts/spells/spell_controller.gd" id="1_v7wfi"]
 [ext_resource type="Texture2D" uid="uid://datio37gdd5f1" path="res://images/spell1.png" id="2_v7wfi"]
 
 [sub_resource type="Animation" id="Animation_ejbsa"]
@@ -49,7 +49,7 @@ radius = 0.11
 collision_layer = 3
 collision_mask = 5
 script = ExtResource("1_v7wfi")
-damage = 1.5
+damage = 1.8
 knockback = 0.6
 speed = 4.6
 lifetime = 2.5

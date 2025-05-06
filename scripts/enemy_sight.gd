@@ -19,8 +19,7 @@ func _on_area_of_sight_out_body_exited(body) -> void:
 	if(ai_controller.current_target == body):
 		can_chase = false
 		ai_controller.forget_target()
-		
-		
+
 func _physics_process(delta: float) -> void:
 	if(can_chase):
 		var space_state := get_world_3d().direct_space_state
@@ -31,7 +30,6 @@ func _physics_process(delta: float) -> void:
 			ai_controller.is_chasing = true
 		else:
 			ai_controller.is_chasing = false
-
 
 func _on_health_damaged(damage: float, current_health: float) -> void:
 	if(ai_controller.current_target):
