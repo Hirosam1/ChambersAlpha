@@ -22,7 +22,8 @@ folder_colors={
 "res://scenes/assets/": "red",
 "res://scenes/scenes/": "blue",
 "res://scripts/": "teal",
-"res://scripts/shaders/": "purple"
+"res://scripts/shaders/": "purple",
+"res://scripts/utils/": "gray"
 }
 
 [input]

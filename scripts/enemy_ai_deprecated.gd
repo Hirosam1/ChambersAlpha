@@ -1,4 +1,4 @@
-class_name EnemyAiController
+#class_name EnemyAiController
 extends CharacterBody3D
 
 @export var speed = 3.0
@@ -45,7 +45,6 @@ func forget_target() -> void:
 func _ready() -> void:
 	offset_elapsed_time = rng.randf_range(0.0, offset_delay_time)
 	animation_player.speed_scale += randf_range(-0.05,0.05)
-	
 
 func _process(delta: float) -> void:
 	offset_elapsed_time += delta
