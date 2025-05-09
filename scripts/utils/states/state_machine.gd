@@ -14,7 +14,7 @@ func _ready() -> void:
 
 	if(initial_state):
 		current_state = initial_state
-		current_state.enter(null)
+		current_state.enter(null, {})
 
 func _process(delta: float) -> void:
 	if(current_state):
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	if(current_state):
 		current_state.update_physics(delta)
 	
-func on_state_changed(from_state: State, next_state_name: String) -> void:
+func on_state_changed(from_state: State, next_state_name: String, args: Dictionary) -> void:
 	if(from_state != current_state):
 		return
 	
@@ -32,8 +32,8 @@ func on_state_changed(from_state: State, next_state_name: String) -> void:
 	if(!next_state):
 		return
 	
-	if(current_state):
+	if(current_state): 
 		current_state.exit(next_state)
-	
-	next_state.enter(current_state)
+	#print("State chaged " + current_state.name.to_lower() + " to " + next_state.name.to_lower())
+	next_state.enter(current_state, args)
 	current_state = next_state

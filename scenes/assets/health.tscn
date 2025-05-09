@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfeydpej1u85p"]
 
-[ext_resource type="Script" uid="uid://buulyxqrxigr2" path="res://scripts/health.gd" id="1_5lwaa"]
+[ext_resource type="Script" uid="uid://buulyxqrxigr2" path="res://scripts/health_deprecated.gd" id="1_5lwaa"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_imgwi"]
 radius = 0.26

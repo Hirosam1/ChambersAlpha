@@ -1,10 +1,10 @@
 class_name PlayerHero
 extends CharacterBody3D
 
-## Define its speed in (px/s)
+## Define its speed in (units/s)
 @export
 var speed := 2.0
-
+## Defines much the mouse rotates the camera on the y axis.
 @export
 var mouse_sensitivity := 0.25
 
@@ -28,7 +28,7 @@ func hurt(velocity_knockback: Vector2) -> void:
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Get player input
 	inpt_mov_vec.x = Input.get_axis("player_mov_left","player_mov_right")
 	inpt_mov_vec.y = Input.get_axis("player_mov_up","player_mov_down")

@@ -1,11 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2h1uhgb0jaq2"]
+[gd_scene load_steps=22 format=3 uid="uid://c2h1uhgb0jaq2"]
 
-[ext_resource type="Texture2D" uid="uid://bxjtu08jd748w" path="res://images/slime_enemy.png" id="1_dql47"]
-[ext_resource type="Script" uid="uid://brnp8re3cyssq" path="res://scripts/enemy_ai_deprecated.gd" id="1_sq6r8"]
-[ext_resource type="Script" uid="uid://cj3dlslur7t8m" path="res://scripts/slime_enemy_animation.gd" id="2_w1kdo"]
-[ext_resource type="Script" uid="uid://bvqoycs07bpsa" path="res://scripts/enemy_sight.gd" id="5_ij7p7"]
-[ext_resource type="Script" uid="uid://v8poncnidvp1" path="res://scenes/assets/hurt_box.gd" id="6_bwd8p"]
-[ext_resource type="PackedScene" uid="uid://dfeydpej1u85p" path="res://scenes/assets/health.tscn" id="6_p2bkd"]
+[ext_resource type="Script" uid="uid://c681ru0rsqh83" path="res://scripts/enemy_controller.gd" id="1_076s0"]
+[ext_resource type="Script" uid="uid://7lggjfrulawp" path="res://scripts/utils/states/state_machine.gd" id="2_2p6iq"]
+[ext_resource type="Texture2D" uid="uid://bxjtu08jd748w" path="res://images/slime_enemy.png" id="2_uvkdx"]
+[ext_resource type="Script" uid="uid://cj3dlslur7t8m" path="res://scripts/slime_enemy_animation.gd" id="3_2p6iq"]
+[ext_resource type="Script" uid="uid://cgat83j3sr8nm" path="res://scripts/utils/states/enemy/enemy_state_idle.gd" id="3_p6u6l"]
+[ext_resource type="Script" uid="uid://cro3y60omudma" path="res://scripts/utils/states/enemy/enemy_state_hurt.gd" id="4_2oasf"]
+[ext_resource type="PackedScene" uid="uid://dfeydpej1u85p" path="res://scenes/assets/health.tscn" id="5_2oasf"]
+[ext_resource type="Script" uid="uid://blfi72n53rcsy" path="res://scripts/utils/states/enemy/enemy_state_chase.gd" id="5_if0bo"]
+[ext_resource type="Script" uid="uid://v8poncnidvp1" path="res://scripts/hurt_box.gd" id="6_if0bo"]
+[ext_resource type="Script" uid="uid://di3x6ktadx25p" path="res://scripts/enemy_sight.gd" id="9_kuumb"]
+[ext_resource type="Script" uid="uid://vw45esa5aovd" path="res://scripts/health.gd" id="11_ltto0"]
+[ext_resource type="Script" uid="uid://d0gbwe1xebx35" path="res://scripts/utils/states/enemy/enemy_state_dead.gd" id="12_a2i02"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bwd8p"]
 radius = 0.3
@@ -43,7 +49,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ij7p7"]
 resource_name = "slime_hurt"
-length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -94,8 +99,8 @@ radius = 0.38
 collision_layer = 8
 collision_mask = 7
 axis_lock_linear_y = true
-script = ExtResource("1_sq6r8")
-speed = 1.5
+script = ExtResource("1_076s0")
+speed = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_bwd8p")
@@ -104,19 +109,18 @@ shape = SubResource("SphereShape3D_bwd8p")
 pixel_size = 0.0313
 billboard = 1
 texture_filter = 0
-texture = ExtResource("1_dql47")
+texture = ExtResource("2_uvkdx")
 hframes = 4
 vframes = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SlimeAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_m4n30")
 }
-script = ExtResource("2_w1kdo")
+script = ExtResource("3_2p6iq")
 
-[node name="EnemyAiSight" type="Node3D" parent="." node_paths=PackedStringArray("ai_controller")]
-script = ExtResource("5_ij7p7")
-ai_controller = NodePath("..")
+[node name="EnemyAiSight" type="Node3D" parent="."]
+script = ExtResource("9_kuumb")
 obstacle_mask = 1
 
 [node name="AreaOfSightIn" type="Area3D" parent="EnemyAiSight"]
@@ -135,26 +139,59 @@ collision_mask = 8
 shape = SubResource("SphereShape3D_p2bkd")
 debug_color = Color(0.184314, 0.784314, 0.556863, 0.286275)
 
-[node name="Health" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("6_p2bkd")]
+[node name="Health" parent="." instance=ExtResource("5_2oasf")]
 collision_layer = 4
 collision_mask = 2
-max_health = 8.0
-controller = NodePath("..")
+script = ExtResource("11_ltto0")
 
 [node name="HurtBox" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("6_bwd8p")
+script = ExtResource("6_if0bo")
 damage = 1.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("SphereShape3D_ppeoo")
 debug_color = Color(0.932399, 0, 0.086289, 0.67451)
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="body_entered" from="EnemyAiSight/AreaOfSightIn" to="EnemyAiSight" method="_on_area_of_sight_in_body_entered"]
-[connection signal="body_entered" from="EnemyAiSight/AreaOfSightOut" to="EnemyAiSight" method="_on_area_of_sight_out_body_entered"]
-[connection signal="body_exited" from="EnemyAiSight/AreaOfSightOut" to="EnemyAiSight" method="_on_area_of_sight_out_body_exited"]
-[connection signal="damaged" from="Health" to="EnemyAiSight" method="_on_health_damaged"]
-[connection signal="damaged" from="Health" to="HurtBox" method="_on_health_damaged"]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_2p6iq")
+initial_state = NodePath("EnemyStateIdle")
+metadata/_custom_type_script = "uid://7lggjfrulawp"
+
+[node name="EnemyStateIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller", "health", "enemy_sight", "animation_player")]
+script = ExtResource("3_p6u6l")
+controller = NodePath("../..")
+health = NodePath("../../Health")
+enemy_sight = NodePath("../../EnemyAiSight")
+animation_player = NodePath("../../SlimeAnimationPlayer")
+metadata/_custom_type_script = "uid://cgat83j3sr8nm"
+
+[node name="EnemyStateHurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller", "health", "enemy_sight", "animation_player")]
+script = ExtResource("4_2oasf")
+hurt_time = 0.5
+controller = NodePath("../..")
+health = NodePath("../../Health")
+enemy_sight = NodePath("../../EnemyAiSight")
+animation_player = NodePath("../../SlimeAnimationPlayer")
+metadata/_custom_type_script = "uid://cro3y60omudma"
+
+[node name="EnemyStateChase" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller", "health", "enemy_sight", "animation_player")]
+script = ExtResource("5_if0bo")
+controller = NodePath("../..")
+health = NodePath("../../Health")
+enemy_sight = NodePath("../../EnemyAiSight")
+animation_player = NodePath("../../SlimeAnimationPlayer")
+metadata/_custom_type_script = "uid://blfi72n53rcsy"
+
+[node name="EnemyStateDead" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurt_box", "controller", "health", "enemy_sight", "animation_player")]
+script = ExtResource("12_a2i02")
+hurt_box = NodePath("../../HurtBox")
+controller = NodePath("../..")
+health = NodePath("../../Health")
+enemy_sight = NodePath("../../EnemyAiSight")
+animation_player = NodePath("../../SlimeAnimationPlayer")
+metadata/_custom_type_script = "uid://d0gbwe1xebx35"
+
+[connection signal="animation_finished" from="SlimeAnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]

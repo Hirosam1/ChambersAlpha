@@ -1,18 +1,17 @@
-#class_name EnemyAiController
 extends CharacterBody3D
 
-@export var speed = 3.0
+@export var speed := 3.0
 @onready var animation_player := $AnimationPlayer
 @onready var rng := RandomNumberGenerator.new()
 
-var offset_delay_time = .8
-var offset_elapsed_time = 0.0
+var offset_delay_time := .8
+var offset_elapsed_time := 0.0
 
 var current_target: PlayerHero
-var offset_angle: float = 0.0
+var offset_angle := 0.0
 
 #States
-var is_alive = true
+var is_alive := true
 var is_hurt := false
 var is_chasing := false
 

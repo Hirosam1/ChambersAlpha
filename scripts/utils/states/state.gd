@@ -1,19 +1,22 @@
 extends Node
 class_name State
 
-signal change_state (from_state: State, next_state_name: String)
+signal change_state (from_state: State, next_state_name: String, args: Dictionary)
 
-func enter(previous_state: State) -> void:
+func _ready() -> void:
+	print(self.name)
+
+func enter(_previous_state: State, _args: Dictionary) -> void:
 	pass
 
-func exit(next_state: State) -> void:
+func exit(_next_state: State) -> void:
 	pass
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	pass
 
-func update_physics(delta: float) -> void:
+func update_physics(_delta: float) -> void:
 	pass
 
-func update_input(input: InputEvent) -> void:
+func update_input(_input: InputEvent) -> void:
 	pass

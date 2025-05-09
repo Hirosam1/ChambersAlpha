@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		cast_elapsed_time = 0.0
 
 
-func _on_health_damaged(damage: float, current_health: float) -> void:
+func _on_health_damaged(_damage: float, current_health: float) -> void:
 	if(current_health <= 0):
 		is_alive = false
 		

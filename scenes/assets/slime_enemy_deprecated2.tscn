@@ -1,12 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://btdcya0vgwxij"]
+[gd_scene load_steps=16 format=3 uid="uid://c5pygj4u3f5jc"]
 
-[ext_resource type="Script" uid="uid://d1k4t6l6y7jtj" path="res://scripts/enemy_ai.gd" id="1_lfaia"]
-[ext_resource type="Script" uid="uid://7lggjfrulawp" path="res://scripts/utils/states/state_machine.gd" id="2_2p6iq"]
-[ext_resource type="Texture2D" uid="uid://bxjtu08jd748w" path="res://images/slime_enemy.png" id="2_uvkdx"]
-[ext_resource type="Script" uid="uid://cj3dlslur7t8m" path="res://scripts/slime_enemy_animation.gd" id="3_2p6iq"]
-[ext_resource type="Script" uid="uid://bvqoycs07bpsa" path="res://scripts/enemy_sight.gd" id="4_p6u6l"]
-[ext_resource type="PackedScene" uid="uid://dfeydpej1u85p" path="res://scenes/assets/health.tscn" id="5_2oasf"]
-[ext_resource type="Script" uid="uid://v8poncnidvp1" path="res://scenes/assets/hurt_box.gd" id="6_if0bo"]
+[ext_resource type="Script" uid="uid://brnp8re3cyssq" path="res://scripts/enemy_ai_deprecated.gd" id="1_r45su"]
+[ext_resource type="Texture2D" uid="uid://bxjtu08jd748w" path="res://images/slime_enemy.png" id="2_oi7sk"]
+[ext_resource type="Script" uid="uid://cj3dlslur7t8m" path="res://scripts/slime_enemy_animation.gd" id="3_rb851"]
+[ext_resource type="Script" uid="uid://bvqoycs07bpsa" path="res://scripts/enemy_sight_deprecated.gd" id="4_fwpyh"]
+[ext_resource type="PackedScene" uid="uid://dfeydpej1u85p" path="res://scenes/assets/health.tscn" id="5_0b43d"]
+[ext_resource type="Script" uid="uid://v8poncnidvp1" path="res://scripts/hurt_box.gd" id="6_i02pg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bwd8p"]
 radius = 0.3
@@ -91,15 +90,8 @@ radius = 8.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_ppeoo"]
 radius = 0.38
 
-[node name="SlimeEnemy" type="CharacterBody3D"]
-collision_layer = 8
-collision_mask = 7
-axis_lock_linear_y = true
-script = ExtResource("1_lfaia")
-
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("2_2p6iq")
-metadata/_custom_type_script = "uid://7lggjfrulawp"
+[node name="SlimeEnemyDeprecated" type="CharacterBody3D"]
+script = ExtResource("1_r45su")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_bwd8p")
@@ -108,7 +100,7 @@ shape = SubResource("SphereShape3D_bwd8p")
 pixel_size = 0.0313
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_uvkdx")
+texture = ExtResource("2_oi7sk")
 hframes = 4
 vframes = 3
 
@@ -116,11 +108,10 @@ vframes = 3
 libraries = {
 &"": SubResource("AnimationLibrary_m4n30")
 }
-script = ExtResource("3_2p6iq")
+script = ExtResource("3_rb851")
 
-[node name="EnemyAiSight" type="Node3D" parent="." node_paths=PackedStringArray("ai_controller")]
-script = ExtResource("4_p6u6l")
-ai_controller = NodePath("..")
+[node name="EnemyAiSight" type="Node3D" parent="."]
+script = ExtResource("4_fwpyh")
 obstacle_mask = 1
 
 [node name="AreaOfSightIn" type="Area3D" parent="EnemyAiSight"]
@@ -139,7 +130,7 @@ collision_mask = 8
 shape = SubResource("SphereShape3D_p2bkd")
 debug_color = Color(0.184314, 0.784314, 0.556863, 0.286275)
 
-[node name="Health" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("5_2oasf")]
+[node name="Health" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("5_0b43d")]
 collision_layer = 4
 collision_mask = 2
 max_health = 8.0
@@ -148,7 +139,7 @@ controller = NodePath("..")
 [node name="HurtBox" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("6_if0bo")
+script = ExtResource("6_i02pg")
 damage = 1.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]

@@ -1,0 +1,155 @@
+[gd_scene load_steps=16 format=3 uid="uid://bo5rwdxsn8ghb"]
+
+[ext_resource type="Script" uid="uid://brnp8re3cyssq" path="res://scripts/enemy_ai_deprecated.gd" id="1_bwd8p"]
+[ext_resource type="Texture2D" uid="uid://bxjtu08jd748w" path="res://images/slime_enemy.png" id="1_dql47"]
+[ext_resource type="Script" uid="uid://cj3dlslur7t8m" path="res://scripts/slime_enemy_animation.gd" id="2_w1kdo"]
+[ext_resource type="Script" uid="uid://bvqoycs07bpsa" path="res://scripts/enemy_sight_deprecated.gd" id="5_ij7p7"]
+[ext_resource type="Script" uid="uid://v8poncnidvp1" path="res://scripts/hurt_box.gd" id="6_bwd8p"]
+[ext_resource type="PackedScene" uid="uid://dfeydpej1u85p" path="res://scenes/assets/health.tscn" id="6_p2bkd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bwd8p"]
+radius = 0.3
+
+[sub_resource type="Animation" id="Animation_w1kdo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bwd8p"]
+resource_name = "slime_death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_ij7p7"]
+resource_name = "slime_hurt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_dql47"]
+resource_name = "slime_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m4n30"]
+_data = {
+&"RESET": SubResource("Animation_w1kdo"),
+&"slime_death": SubResource("Animation_bwd8p"),
+&"slime_hurt": SubResource("Animation_ij7p7"),
+&"slime_idle": SubResource("Animation_dql47")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ij7p7"]
+radius = 4.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p2bkd"]
+radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ppeoo"]
+radius = 0.38
+
+[node name="SlimeEnemyDeprecated" type="CharacterBody3D"]
+script = ExtResource("1_bwd8p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_bwd8p")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.0313
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_dql47")
+hframes = 4
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_m4n30")
+}
+script = ExtResource("2_w1kdo")
+
+[node name="EnemyAiSight" type="Node3D" parent="."]
+script = ExtResource("5_ij7p7")
+obstacle_mask = 1
+
+[node name="AreaOfSightIn" type="Area3D" parent="EnemyAiSight"]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAiSight/AreaOfSightIn"]
+shape = SubResource("SphereShape3D_ij7p7")
+debug_color = Color(0.827451, 0.392157, 0.192157, 0.27451)
+
+[node name="AreaOfSightOut" type="Area3D" parent="EnemyAiSight"]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAiSight/AreaOfSightOut"]
+shape = SubResource("SphereShape3D_p2bkd")
+debug_color = Color(0.184314, 0.784314, 0.556863, 0.286275)
+
+[node name="Health" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("6_p2bkd")]
+collision_layer = 4
+collision_mask = 2
+max_health = 8.0
+controller = NodePath("..")
+
+[node name="HurtBox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("6_bwd8p")
+damage = 1.2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("SphereShape3D_ppeoo")
+debug_color = Color(0.932399, 0, 0.086289, 0.67451)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="EnemyAiSight/AreaOfSightIn" to="EnemyAiSight" method="_on_area_of_sight_in_body_entered"]
+[connection signal="body_entered" from="EnemyAiSight/AreaOfSightOut" to="EnemyAiSight" method="_on_area_of_sight_out_body_entered"]
+[connection signal="body_exited" from="EnemyAiSight/AreaOfSightOut" to="EnemyAiSight" method="_on_area_of_sight_out_body_exited"]
+[connection signal="damaged" from="Health" to="EnemyAiSight" method="_on_health_damaged"]
+[connection signal="damaged" from="Health" to="HurtBox" method="_on_health_damaged"]
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]

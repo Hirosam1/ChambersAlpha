@@ -13,9 +13,9 @@ var direction := Vector3()
 var elapsed_time : float
 
 ## Necessary for spell to work, pass direction of travel
-func ready_spell(direction: Vector3):
+func ready_spell(s_direction: Vector3):
 	elapsed_time = 0.0
-	self.direction = direction.normalized()
+	self.direction = s_direction.normalized()
 	is_cast = true
 
 func _process(delta: float) -> void:
@@ -26,10 +26,10 @@ func _process(delta: float) -> void:
 	elif(is_cast):
 		position += speed * direction * delta
 
-func _on_body_entered(body: Node3D) -> void:
+func _on_body_entered(_body: Node3D) -> void:
 	queue_free()
 
-func _on_area_entered(area: Health) -> void:
+func _on_area_entered(area: Area3D) -> void:
 	if(area is Health):
 		var knockback_velocity := direction * knockback
 		area.hurt(damage, Vector2(knockback_velocity.x,knockback_velocity.z))
